@@ -14,7 +14,10 @@ exports.config = {
     Playwright: {
       url: 'http://localhost',
       show: true,
-      browser: 'chromium'
+      browser: 'firefox',
+      waitForNavigation: 'networkidle0',
+      waitForAction: 1000,
+      
     }
   },
   include: {
