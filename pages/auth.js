@@ -7,7 +7,8 @@ module.exports = {
   createAccountButton: {css: '#SubmitCreate'},
   existUserEmailInput: {css: '#email'},
   existUserPasswordInput: {css: '#passwd'},
-  signInButton: {css: '#SubmitLogin'},
+  userSignInButton: {css: '#SubmitLogin'},
+  
 
 
   waitForPageLoad() {
@@ -21,5 +22,19 @@ module.exports = {
 
   clickCreateAccount() {
     I.click(this.createAccountButton);
+  },
+
+   fillExistUserEmail(email){
+    this.waitForPageLoad();
+    I.fillField(this.existUserEmailInput, email);
+  },
+
+  fillExistUserPassword(password){
+    this.waitForPageLoad();
+    I.fillField(this.existUserPasswordInput, password);
+  },
+
+  clickUserSignInButton(){
+    I.click(this.userSignInButton);
   },
 }
