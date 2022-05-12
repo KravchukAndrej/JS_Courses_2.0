@@ -18,7 +18,10 @@ exports.config = {
       waitForNavigation: 'networkidle0',
       waitForTimeout: 20000,
       timeout: 20000,
-    }
+    },
+    ChaiWrapper : {
+      require: "codeceptjs-chai"
+    },
   },
   include: {
     I: './steps_file.js',

@@ -89,7 +89,7 @@ After(({ I, myAccountPage}) => { // or Background
 Before(({ I, homePage}) => {
     homePage.openStore();
 });
-
+//import assert from "assert";
 Scenario('Choose, compare amount and buy a product', async ({ I, homePage, authPage, myAccountPage}) => {
     homePage.clickSignIn();
     //authPage.fillExistUserEmail(user.userEmail);
@@ -102,14 +102,19 @@ Scenario('Choose, compare amount and buy a product', async ({ I, homePage, authP
     myAccountPage.clickTshirts();
     myAccountPage.waitForFadedShort();
     myAccountPage.clickFadedShort();
-    myAccountPage.getProductPrice();
-    //console.log(await priseFromMenu);
+    let priceFromMenu = myAccountPage.getProductPrice();
+    console.log(await priceFromMenu);
     myAccountPage.waitForAddToCart();
     myAccountPage.clickAddToCart();
     myAccountPage.clickProceedToCheckout();
     myAccountPage.getProductUnitPrice();
-    //console.log(await priseFromUnit);
-    myAccountPage.priceComparison();
+    let priceFromUnit = myAccountPage.getProductUnitPrice();
+    console.log(await priceFromUnit);
+    //myAccountPage.priceComparison();
+    myAccountPage.clickProceedToCheckoutOne();
+    //myAccountPage.waitForClickAgree();
+    myAccountPage.clickProceedToCheckoutTwo();
+    myAccountPage.clickIagree();
     pause();
 
 });

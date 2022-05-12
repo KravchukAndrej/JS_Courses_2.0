@@ -9,6 +9,10 @@ module.exports = {
   proceedToCheckoutButton:{xpath: '//*[contains(text(),"checkout")]'},
   price: {css: '#our_price_display'},
   unitPrice: {xpath: '//tr/td/span/span[@class="price"]'},
+  unitPrice: {xpath: '//tr/td/span/span[@class="price"]'},
+  proceedToCheckoutButtonOne: { css:'#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium > span'},
+  proceedToCheckoutButtonTwo: {xpath: '//button[@class="button btn btn-default button-medium"]'},
+  iAgreeInput: {css: '#cgv'},
 
   waitForPageLoad() {
     I.waitForVisible(this.signOutButton);
@@ -31,6 +35,9 @@ module.exports = {
   clickFadedShort(){
     I.click(this.fadedShortButton);
   },
+  openProduct(){
+    I.amOnPage('http://automationpractice.com/index.php?id_product=1&controller=product');
+  },
   async getProductPrice(){
     return await I.grabTextFrom(this.price);
   },
@@ -46,12 +53,21 @@ module.exports = {
   },
   async getProductUnitPrice(){
     return await I.grabTextFrom(this.unitPrice);
-  },
+  },/*
   priceComparison(){
     if (getProductPrice() == getProductUnitPrice()){
         alert("Суммы в каталоге товара и в корзине совпадают. Можно завершить покупку");
     }else{
         alert("Суммы в каталоге товара и в корзине не совпадают!!! Обратитесь в отдел продаж!");
     };
+  },*/
+  clickProceedToCheckoutOne(){
+    I.click(this.proceedToCheckoutButtonOne);
+  },
+  clickProceedToCheckoutTwo(){
+    I.click(this.proceedToCheckoutButtonTwo);
+  },
+  clickIagree(){
+    I.click(this.iAgreeInput);
   },
 }
