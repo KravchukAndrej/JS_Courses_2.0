@@ -102,6 +102,7 @@ Scenario('Choose, compare amount and buy a product', async ({ I, homePage, authP
     myAccountPage.clickTshirts();
     myAccountPage.waitForFadedShort();
     myAccountPage.clickFadedShort();
+    
     let priceFromMenu = myAccountPage.getProductPrice();
     console.log(await priceFromMenu);
     myAccountPage.waitForAddToCart();
@@ -110,11 +111,18 @@ Scenario('Choose, compare amount and buy a product', async ({ I, homePage, authP
     myAccountPage.getProductUnitPrice();
     let priceFromUnit = myAccountPage.getProductUnitPrice();
     console.log(await priceFromUnit);
-    //myAccountPage.priceComparison();
     myAccountPage.clickProceedToCheckoutOne();
-    //myAccountPage.waitForClickAgree();
+    myAccountPage.waitForButtonTwo();
     myAccountPage.clickProceedToCheckoutTwo();
+    myAccountPage.waitForAgreeInput();
     myAccountPage.clickIagree();
-    pause();
+    myAccountPage.clickProceedToCheckoutThree();
+    myAccountPage.waitForPayButton();
+    myAccountPage.clickPayButton();    
+    myAccountPage.clickConfirmButton();
+});
 
+After(({ I, myAccountPage}) => { 
+    myAccountPage.clickSignOut();
+    pause();
 });

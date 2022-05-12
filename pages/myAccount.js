@@ -4,15 +4,18 @@ module.exports = {
 
   signOutButton: {css: 'a.logout'},
   tshirtsButton: {xpath: '//div/ul/li/a[@title="T-shirts"]'},
-  fadedShortButton: {xpath: '//div/h5/a[@itemprop="url"]'},
+  fadedShortButton: {xpath: '//div/h5/a[@itemprop="url"]'}, //#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium > span
   addToCartButton: {xpath: '//div/p/button[@class="exclusive"]'},
   proceedToCheckoutButton:{xpath: '//*[contains(text(),"checkout")]'},
   price: {css: '#our_price_display'},
   unitPrice: {xpath: '//tr/td/span/span[@class="price"]'},
   unitPrice: {xpath: '//tr/td/span/span[@class="price"]'},
   proceedToCheckoutButtonOne: { css:'#center_column > p.cart_navigation.clearfix > a.button.btn.btn-default.standard-checkout.button-medium > span'},
-  proceedToCheckoutButtonTwo: {xpath: '//button[@class="button btn btn-default button-medium"]'},
-  iAgreeInput: {css: '#cgv'},
+  proceedToCheckoutButtonTwo: {xpath: '//p/button/span[text()="Proceed to checkout"]'},
+  iAgreeInput: {xpath: '//div/span/input[@name="cgv"]'},
+  proceedToCheckoutButtonThree: {xpath: '//button[@name="processCarrier"]'},
+  payButton: {xpath: '//div/p/a[@class="bankwire"]'},
+  confirmButton: {xpath: '//p/button/span[text()="I confirm my order"]'},
 
   waitForPageLoad() {
     I.waitForVisible(this.signOutButton);
@@ -64,10 +67,34 @@ module.exports = {
   clickProceedToCheckoutOne(){
     I.click(this.proceedToCheckoutButtonOne);
   },
-  clickProceedToCheckoutTwo(){
+  waitForButtonTwo(){
+    I.waitForVisible(this.proceedToCheckoutButtonTwo);
+  },
+    clickProceedToCheckoutTwo(){
     I.click(this.proceedToCheckoutButtonTwo);
+  },
+  waitForAgreeInput(){
+    I.waitForVisible(this.iAgreeInput);
   },
   clickIagree(){
     I.click(this.iAgreeInput);
   },
+  clickProceedToCheckoutThree(){
+    I.click(this.proceedToCheckoutButtonThree);
+  },
+  waitForPayButton() {
+    I.waitForVisible(this.payButton);
+  },
+  clickPayButton(){
+   
+    I.click(this.payButton);
+  },
+
+  clickConfirmButton(){
+   // I.waitForInvisible(this.confirmButton);
+    I.click(this.confirmButton);
+  },
+
+
 }
+
